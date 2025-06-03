@@ -1,12 +1,27 @@
-import { Suspense } from 'react'
-import PublicRoutes from './routes/PublicRoutes'
-import PrivateRoutes from './routes/PrivateRoutes'
+import { Suspense } from 'react';
+import PublicRoutes from './routes/PublicRoutes';
+import PrivateRoutes from './routes/PrivateRoutes';
+import Header from 'features/Header';
+import { AppStyles, Footer, Wrapper, Main } from 'App.styled';
+
 const App = () => {
-    return (
-        <Suspense fallback={'Loading...'}>
+  return (
+    <>
+      <AppStyles />
+      <Wrapper>
+        <Header />
+        <Main>
+          <Suspense fallback={'Loading...'}>
             <PrivateRoutes />
             <PublicRoutes />
-            </Suspense>
-    )
-} 
-export default App
+          </Suspense>
+        </Main>
+        <Footer>
+          <div>MarketPlace MW</div>
+        </Footer>
+      </Wrapper>
+    </>
+  );
+};
+
+export default App;
